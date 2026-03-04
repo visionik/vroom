@@ -15,7 +15,7 @@ VROOM is a WebRTC-native protocol and runtime for interactive sessions with AI a
 VROOM is an application protocol built on [OpenMux](https://github.com/visionik/socketpipe/tree/openmux), a transport-agnostic channel multiplexing standard.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#4a90d9', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph TB
     subgraph PC["WebRTC PeerConnection"]
         direction TB
@@ -89,7 +89,7 @@ stateDiagram-v2
 VROOM defines three OpenMux channels. The `pointer` and `button` channels are opened lazily — only when the user enters Interact mode.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'actorLineColor': '#404040', 'signalColor': '#404040', 'actorBkg': '#808080', 'actorTextColor': '#000000', 'noteBkgColor': '#909090'}}}%%
 sequenceDiagram
     participant C as Client
     participant S as Agent Server
@@ -134,7 +134,7 @@ Session control, mode switching, clipboard, navigation, high-level commands, and
 #### Message Types
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#4a90d9', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph TD
     subgraph "omux/control Messages"
         subgraph "Session (0x80-0x82)"
@@ -300,7 +300,7 @@ The server MAY resize its rendering viewport to match, or MAY ignore this and le
 | `mimeType` | string | MAY | Content type. Default: `text/plain` |
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'actorLineColor': '#404040', 'signalColor': '#404040', 'actorBkg': '#808080', 'actorTextColor': '#000000', 'noteBkgColor': '#909090'}}}%%
 sequenceDiagram
     participant C as Client
     participant S as Server
@@ -373,7 +373,7 @@ Structured high-level commands for Voice mode. The agent translates these to bro
 | `natural` | `text` | `{"action": "natural", "text": "find the search box and type hello"}` |
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'actorLineColor': '#404040', 'signalColor': '#404040', 'actorBkg': '#808080', 'actorTextColor': '#000000', 'noteBkgColor': '#909090'}}}%%
 sequenceDiagram
     participant C as Client
     participant S as Agent Server
@@ -451,7 +451,7 @@ The client MAY render a remote cursor overlay on the video. In Interact mode, th
 | `browser` | object | MAY | Browser navigation state |
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'stateLabelColor': '#000000', 'compositeBackground': '#a0a0a0'}}}%%
 stateDiagram-v2
     [*] --> idle
     idle --> thinking: LLM processing
@@ -514,7 +514,7 @@ Text chat alongside voice — the agent can respond via TTS (audio track) and/or
 High-frequency mouse/touch movement. Binary-packed for minimal overhead. Loss-tolerant — stale position events are irrelevant once a newer one arrives.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#4a90d9', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph LR
     subgraph "omux/pointer Messages"
         M1["0x01 MOUSE_MOVE<br/>4 bytes"]
@@ -528,7 +528,7 @@ graph LR
 Absolute mouse position.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-15: "X position (uint16, big-endian)"
   16-31: "Y position (uint16, big-endian)"
@@ -548,7 +548,7 @@ Coordinates are relative to the agent's viewport (0,0 = top-left). Client MUST s
 Relative mouse movement (pointer lock / FPS mode).
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-15: "dX (int16, big-endian)"
   16-31: "dY (int16, big-endian)"
@@ -566,7 +566,7 @@ Used when the client has pointer lock (e.g., gaming, 3D navigation).
 Scroll / wheel event.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-15: "dX (int16, big-endian)"
   16-31: "dY (int16, big-endian)"
@@ -586,7 +586,7 @@ Values represent scroll delta in pixels. The server normalizes to its scrolling 
 Discrete input events — clicks, keypresses, touch start/end. Every event MUST arrive, in order.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#4a90d9', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph LR
     subgraph "omux/button Messages"
         M1["0x10 MOUSE_DOWN<br/>5 bytes"]
@@ -602,7 +602,7 @@ graph LR
 #### MOUSE_DOWN (0x10) / MOUSE_UP (0x11) — Client → Server
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-15: "X position (uint16)"
   16-31: "Y position (uint16)"
@@ -632,7 +632,7 @@ Position is included with click events (not just inferred from last MOUSE_MOVE) 
 Variable-length keyboard events using DOM `key` and `code` strings.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-7: "key_len (uint8)"
   8-47: "key (UTF-8, variable)"
@@ -664,7 +664,7 @@ No translation table needed. X11 keysyms (used by n.eko and Selkies) would requi
 **Modifier bitmask:**
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0: "Shift"
   1: "Ctrl"
@@ -686,7 +686,7 @@ packet-beta
 The modifier byte is redundant with the key/code fields (e.g., a Shift key-down event will have `key="Shift"` AND bit 0 set). This is intentional — the bitmask provides a fast path for the server to check modifier state without parsing the key string.
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'actorLineColor': '#404040', 'signalColor': '#404040', 'actorBkg': '#808080', 'actorTextColor': '#000000', 'noteBkgColor': '#909090'}}}%%
 sequenceDiagram
     participant C as Client
     participant S as Server
@@ -705,7 +705,7 @@ sequenceDiagram
 #### TOUCH_START (0x14) — Client → Server
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-7: "Touch ID (uint8)"
   8-23: "X position (uint16)"
@@ -727,7 +727,7 @@ Same format as TOUCH_START. Sent on the `button` channel (reliable) rather than 
 #### TOUCH_END (0x16) — Client → Server
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#909090'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 packet-beta
   0-7: "Touch ID (uint8)"
 ```
@@ -737,7 +737,7 @@ packet-beta
 | Touch ID | 1 byte | uint8 | Touch point that ended |
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'actorLineColor': '#404040', 'signalColor': '#404040', 'actorBkg': '#808080', 'actorTextColor': '#000000', 'noteBkgColor': '#909090'}}}%%
 sequenceDiagram
     participant C as Client
     participant S as Server
@@ -761,7 +761,7 @@ sequenceDiagram
 Complete end-to-end flow from signaling to interactive session:
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333', 'noteBkgColor': '#e8e8e8'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040', 'actorLineColor': '#404040', 'signalColor': '#404040', 'actorBkg': '#808080', 'actorTextColor': '#000000', 'noteBkgColor': '#909090'}}}%%
 sequenceDiagram
     participant C as Client (Browser)
     participant H as HTTP Server
@@ -811,7 +811,7 @@ sequenceDiagram
 ## Coordinate System
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph TD
     subgraph "Agent Viewport (1024×1024)"
         O["(0,0)"] --- TR["(1024,0)"]
@@ -838,7 +838,7 @@ wss://host/vroom
 ```
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph TD
     subgraph "WebRTC Mode (preferred)"
         WR1["Video: MediaTrack"]
@@ -870,7 +870,7 @@ In WebSocket mode:
 VROOM's input protocol was designed after studying four existing projects:
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000', 'primaryColor': '#4a90d9', 'lineColor': '#333'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph TB
     N["n.eko<br/>JSON / WebSocket<br/>X11 keysyms"]
     S["Selkies-GStreamer<br/>CSV / DataChannel<br/>X11 keysyms"]
