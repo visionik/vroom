@@ -30,12 +30,14 @@ flowchart TD
   mac[macOS AX adapter]
   win[Windows UIA adapter]
   lin[Linux AT-SPI adapter]
+  cdp[Browser CDP adapter]
   pix[Pixel fallback]
 
   agent --> xumux --> structural --> ir
   ir --> mac
   ir --> win
   ir --> lin
+  ir --> cdp
   structural --> pix
 ```
 
@@ -45,7 +47,7 @@ flowchart TD
 
 ## Goals
 
-- One agent vocabulary across macOS, Windows, and Linux
+- One agent vocabulary across macOS, Windows, Linux, and browser (CDP)
 - Prefer tree fidelity over vision when the platform exposes a usable node
 - Explicit, negotiated pixel fallback when the tree is empty, stale, or canvas-like
 - Reliable, ordered delivery for snapshots and acts (never ride the unreliable pointer channel)
@@ -214,7 +216,7 @@ Encoding: **CBOR preferred**, JSON accepted (negotiated in STRUCT_HANDSHAKE), sa
 }
 ```
 
-Server response MUST echo negotiated caps. `platforms` / `adapters` are informational (one host, one primary adapter). Client may set `pixel_fallback: false` to forbid rung 3.
+Server response MUST echo negotiated caps. `platforms` / `adapters` are informational (one host, one primary adapter). Browser sessions advertise `adapters: ["cdp"]` (optionally alongside an OS adapter if the host also exposes desktop a11y). Client may set `pixel_fallback: false` to forbid rung 3.
 
 ### SNAPSHOT_REQ (`0xA1`) / SNAPSHOT (`0xA2`)
 
@@ -292,6 +294,7 @@ Used when `pixel_fallback` is on and tree/hybrid cannot complete an ACT (or clie
 | macOS | Accessibility (`AXUIElement`) + ScreenCapture/Peekaboo | First reference adapter; align with fox aqua |
 | Windows | UI Automation (UIA) | Prefer UIA over MSAA |
 | Linux | AT-SPI2 | Best-effort; declare weak coverage in handshake |
+| Browser | CDP (`Accessibility.getFullAXTree` + DOM bounds) | Same IR — not a separate VROOM-Browser protocol |
 
 Adapters MUST:
 
@@ -301,6 +304,25 @@ Adapters MUST:
 4. Never require the agent to send native identifiers
 
 Adapters SHOULD expose `canvas` / `web` roles when the subtree is opaque so agents know to expect pixel fallback.
+
+### Browser / CDP adapter
+
+CDP is **another host adapter**, not a second agent dialect. Handshake MAY advertise `adapters: ["cdp"]` and `platforms: ["browser"]` (or the embedding OS plus browser).
+
+Map, in order of preference:
+
+1. CDP Accessibility tree (`Accessibility.getFullAXTree`) → IR roles/states/names
+2. DOM fallback for bounds (`DOM.getBoxModel` / `getContentQuads`) when AX bounds are missing
+3. Pixel rung for `canvas` / WebGL / empty AX
+
+Hosts SHOULD:
+
+- Flatten or nest iframes/shadow roots explicitly (`attrs.frame_id`, `attrs.shadow` as IR attrs — still no raw CDP ids in required fields)
+- Treat SPA virtualization as stale-tree: emit EVENT or bump `rev` and let clients re-SNAPSHOT
+- Keep CSS selectors / `backendNodeId` in the optional `native` debug bag only when `debug: true`
+
+Agents MUST NOT be required to speak CDP, CSS, or XPath to use Structural against a browser.
+
 
 ---
 
@@ -349,8 +371,9 @@ A session MAY open both. Structural acts SHOULD update the same desktop Graphica
 2. macOS adapter + SNAPSHOT/FIND/ACT happy path
 3. Pixel fallback hook
 4. Windows UIA adapter
-5. Linux AT-SPI adapter
-6. EVENT streaming / diff snapshots
+5. Browser CDP adapter (same IR)
+6. Linux AT-SPI adapter
+7. EVENT streaming / diff snapshots
 
 ---
 
