@@ -10,12 +10,13 @@ Version: 0.2.0-draft | Status: Draft | Date: 2026-03-28
 
 VROOM is a protocol family and runtime for interactive sessions with AI agents, built on [xumux](https://xumux.org), a transport-agnostic channel multiplexing standard.
 
-VROOM comprises two companion protocols that can run over the same xumux connection:
+VROOM comprises companion protocols that can run over the same xumux connection:
 
 | Protocol | Spec | Description |
 |----------|------|-------------|
 | **VROOM-Graphical** | [VROOM-Graphical.md](./VROOM-Graphical.md) | Remote desktop/browser access — video, audio, mouse, keyboard, touch, voice commands |
 | **VROOM-Terminal** | [VROOM-Terminal.md](./VROOM-Terminal.md) | Terminal access — PTY, capability negotiation, Kitty keyboard/graphics, CBOR control plane |
+| **VROOM-Structural** | [VROOM-Structural.md](./VROOM-Structural.md) | Structured UI tree for agents — one IR; hosts map AX / UIA / AT-SPI; pixel fallback |
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
