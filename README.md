@@ -39,9 +39,18 @@ graph TB
 
 ## Architecture
 
-- **Single `vroomd` daemon** supports both protocols simultaneously
-- **Shared xumux connection** — graphical and terminal channels coexist
+- **Single `vroomd` daemon** supports Graphical, Terminal, and Structural simultaneously
+- **Shared xumux connection** — channels from all three protocols coexist
 - **Thin gateways** (`vroom-to-ssh`, `ssh-to-vroom`) planned for adoption
+- **I/O stack** — xumux frames and demuxes; each VROOM channel owns its payload codec. See [docs/io-stack.md](./docs/io-stack.md).
+
+## Related projects
+
+| Project | Role |
+|---------|------|
+| [xumux](https://github.com/deftai/xumux) | Mux protocol — 8-byte framing, channels, transport bindings ([xumux.org](https://xumux.org)) |
+| [libxumux](https://github.com/deftai/libxumux) | TypeScript implementation of xumux |
+| [I/O stack](./docs/io-stack.md) | How VROOM presets and **channel codecs** sit on an xumux session |
 
 ## Reference Implementation
 
@@ -53,7 +62,7 @@ The reference implementation is [voxio-bot](https://github.com/visionik/voxio-bo
 
 ## Status
 
-VROOM is in active development. Both protocols are draft and subject to change.
+VROOM is in active development. The protocols are draft and subject to change.
 
 ## License
 
