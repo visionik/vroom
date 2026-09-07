@@ -8,6 +8,8 @@ and this project adheres to [Conventional Commits](https://www.conventionalcommi
 ## [Unreleased]
 
 ### Added
+- [docs/io-stack.md](./docs/io-stack.md) — VROOM-on-xumux I/O mapping (ByteTransport, framer, per-channel codecs, presets); README + spec pointers
+
 - VROOM-Terminal spec (v0.2.0-draft) — terminal access protocol with PTY, Kitty keyboard/graphics, CBOR control plane, and capability negotiation
 - `control_encoding` negotiation field in both VROOM-Graphical and VROOM-Terminal handshakes — CBOR preferred, JSON accepted
 - HELLO bootstrap protocol for encoding negotiation (always JSON, selects encoding for subsequent messages)

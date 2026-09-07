@@ -10,6 +10,8 @@ Version: 0.2.0-draft | Status: Draft | Date: 2026-03-28
 
 Both protocols can run over the same xumux connection.
 
+**Implementation note:** Control TLV/CBOR and PTY bytes are **channel codecs** on xumux — not mux-framer encodings. See [I/O stack](./docs/io-stack.md).
+
 ---
 
 ## Core Channel Types

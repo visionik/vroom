@@ -21,6 +21,8 @@ VROOM-Structural is the **structured UI access** protocol in the VROOM family. A
 
 VROOM-Structural is an application protocol on [xumux](https://xumux.org). It MAY share one xumux connection with Graphical and/or Terminal.
 
+**Implementation note:** Tree IR (CBOR preferred) is a **channel codec** on `omux/structural`. See [I/O stack](./docs/io-stack.md).
+
 ```mermaid
 flowchart TD
   agent[Agent]

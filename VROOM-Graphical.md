@@ -15,6 +15,8 @@ VROOM-Graphical is the graphical/desktop access protocol within the VROOM family
 
 VROOM-Graphical is an application protocol built on [xumux](https://xumux.org), a transport-agnostic channel multiplexing standard. Both VROOM-Graphical and [VROOM-Terminal](./VROOM-Terminal.md) can run over the same xumux connection.
 
+**Implementation note:** Control CBOR and packed pointer/button payloads are **channel codecs** on xumux. Media tracks sit beside the mux. See [I/O stack](./docs/io-stack.md).
+
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {'primaryTextColor': '#000000', 'secondaryTextColor': '#000000', 'tertiaryTextColor': '#000000', 'noteTextColor': '#000000', 'primaryColor': '#909090', 'secondaryColor': '#808080', 'tertiaryColor': '#707070', 'lineColor': '#404040'}}}%%
 graph TB
